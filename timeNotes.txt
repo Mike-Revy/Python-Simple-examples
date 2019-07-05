@@ -1,0 +1,90 @@
+datetime or time object - can specify timezone - so object knows where it is in the world - it is AWARE - otherwise NIAVE
+
+import datetime 
+
+pacific = datetime.timezone(datetime.timedelta(hours=-8))
+eastern = datetime.timezone(datetime.timedelta(hours=-5))
+
+specify offset from UTC 
+
+naive = datetime.datetime(2014, 4, 21,9)
+
+aware = datetime.datetime(2014, 4, 21, 9, tzinfo=pacific)
+>>> aware
+datetime.datetime(2014, 4, 21, 9, 0, tzinfo=datetime.timezone(datetime.timedelta(-1, 57600)))
+
+naive.astimezone(eastern)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: astimezone() cannot be applied to a naive datetime
+>>> aware.astimezone(eastern)
+datetime.datetime(2014, 4, 21, 12, 0, tzinfo=datetime.timezone(datetime.timedelta(-1, 68400)
+auckland = datetime.timezone(datetime.timedelta(hours=13))
+aware.astimezone(auckland)
+datetime.datetime(2014, 4, 22, 6, 0, tzinfo=datetime.timezone(datetime.timedelta(0, 46800)))
+>>> mumbai = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
+>>> mumbai
+datetime.timezone(datetime.timedelta(0, 19800))
+
+PYTZ Library ... - pip install pytz ... 
+>>> import datetime
+>>> import pytz
+>>> pacific = pytz.timezone('US/Pacific')
+>>> eastern = pytz.timezone('US/Eastern')
+>>> fmt = '%Y-%m-%d %H:%M:%S %Z%z'
+### Z is offset from UTC time 
+>>> utc = pytz.utc
+>>> start = pacific.localize(datetime.datetime(2015, 4, 21,9))
+## localize - takes a datetime (niave) and appends UTC
+>>> start.strftime(fmt)
+'2015-04-21 09:00:00 PDT-0700'
+>>> start_eastern = start.astimezone(eastern)
+>>> start_eastern
+datetime.datetime(2015, 4, 21, 12, 0, tzinfo=<DstTzInfo 'US/Eastern' EDT-1 day, 20:00:00 DST>)
+>>> start_utc = datetime.datetime(2014, 4, 21, 1, tzinfo=utc)
+>>> start_utc.strftime(fmt)
+'2014-04-21 01:00:00 UTC+0000'
+>>> start_pacific = start_utc.astimezone(pacific)
+>>> start_pacific
+datetime.datetime(2014, 4, 20, 18, 0, tzinfo=<DstTzInfo 'US/Pacific' PDT-1 day, 17:00:00 DST>)
+>>> auckland = pytz.timezone('Pacific/Auckland')
+>>> mumbai = pytz.timezone('Asia/Calcutta')
+>>> apollo_13_niave = datetime.datetime(1970, 4, 11,14,13)
+
+>>> apollo_13_eastern = eastern.localize(apollo_13_niave)
+>>> apollo_13_eastern
+
+datetime.datetime(1970, 4, 11, 14, 13, tzinfo=<DstTzInfo 'US/Eastern' EST-1 day, 19:00:00 STD>)
+>>> apollo_13_niave
+datetime.datetime(1970, 4, 11, 14, 13)
+>>> apollo_13_utc = apollo_13_eastern.astimezone(utc)
+>>> apollo_13_utc
+datetime.datetime(1970, 4, 11, 19, 13, tzinfo=<UTC>)
+>>> apollo_13_utc.astimezone(pacific).strftime(fmt)
+'1970-04-11 11:13:00 PST-0800'
+>>> apollo_13_utc.astimezone(auckland).strftime(fmt)
+'1970-04-12 07:13:00 NZST+1200'
+>>> apollo_13_utc.astimezone(mumbai).strftime(fmt)
+'1970-04-12 00:43:00 IST+0530'
+>>> pytz.all_timezones
+>>> pytz.country_timezones['us']
+['America/New_York', 'America/Detroit', 'America/Kentucky/Louisville', 'America/Kentucky/Monticello', 'America/Indiana/Indianapolis', 'America/Indiana/Vincennes', 'America/Indiana/Winamac', 'America/Indiana/Marengo', 'America/Indiana/Petersburg', 'America/Indiana/Vevay', 'America/Chicago', 'America/Indiana/Tell_City', 'America/Indiana/Knox', 'America/Menominee', 'America/North_Dakota/Center', 'America/North_Dakota/New_Salem', 'America/North_Dakota/Beulah', 'America/Denver', 'America/Boise', 'America/Phoenix', 'America/Los_Angeles', 'America/Anchorage', 'America/Juneau', 'America/Sitka', 'America/Metlakatla', 'America/Yakutat', 'America/Nome', 'America/Adak', 'Pacific/Honolulu']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

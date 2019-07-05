@@ -1,0 +1,24 @@
+managing objects 
+>>> isinstance('a', str)
+True
+>>> isinstance(5.2, (int, float))
+True
+>>> isinstance(5.2, (str, bool, dict))
+False
+>>> isinstance(True, int)
+True
+>>> issubclass(bool, int)
+True
+>>> issubclass(str, int)
+False
+>>> from thieves import Thief
+>>> from characters import Character
+>>> issubclass(Thief, Character)
+True
+>>> kenneth = Thief(name="Kenneth")
+>>> type(kenneth)
+<class 'thieves.Thief'>
+>>> kenneth.__class__
+<class 'thieves.Thief'>
+>>> kenneth.__class__.__name__
+'Thief'

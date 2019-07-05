@@ -1,0 +1,48 @@
+INFO:root:monster: (4, 5); door: (5, 1); player: (2, 1)
+INFO:root:monster: (0, 2); door: (4, 4); player: (2, 2)
+INFO:root:monster: (3, 5); door: (3, 1); player: (0, 4)
+CRITICAL:root:message
+ERROR:root:message
+WARNING:root:message
+INFO:root:message
+DEBUG:root:message
+INFO:root:monster: (0, 1); door: (0, 0); player: (1, 1)
+CRITICAL:root:message
+ERROR:root:message
+WARNING:root:message
+INFO:root:message
+DEBUG:root:message
+INFO:root:monster: (0, 2); door: (3, 0); player: (0, 3)
+CRITICAL:root:message
+ERROR:root:message
+WARNING:root:message
+INFO:root:message
+DEBUG:root:message
+INFO:root:monster: (0, 1); door: (1, 0); player: (3, 2)
+CRITICAL:root:message
+ERROR:root:message
+WARNING:root:message
+INFO:root:message
+DEBUG:root:message
+INFO:root:monster: (2, 2); door: (3, 0); player: (3, 3)
+CRITICAL:root:message
+ERROR:root:message
+WARNING:root:message
+INFO:root:message
+DEBUG:root:message
+CRITICAL:root:message
+ERROR:root:message
+WARNING:root:message
+INFO:root:message
+DEBUG:root:message
+CRITICAL:root:message
+ERROR:root:message
+WARNING:root:message
+INFO:root:message
+DEBUG:root:message
+CRITICAL:root:message
+ERROR:root:message
+WARNING:root:message
+INFO:root:message
+DEBUG:root:message
+INFO:root:monster: (3, 3); door: (0, 2); player: (3, 1)

@@ -1,0 +1,2 @@
+class ReversedStr(str):
+    pass

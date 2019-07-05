@@ -1,0 +1,121 @@
+PEP - Python enhancement proposal 
+PEP 8 - defines style guide for python
+flake8.py ??? 
+
+
+
+ 
+PEP 21 
+
+>> python 
+>> import this 
+>> help(str) ... lists docs on str object 
+
+import datetime 
+dir(datetime)
+['MAXYEAR', 'MINYEAR', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', '_divide_and_round', 'date', 'datetime', 'datetime_CAPI', 'time', 'timedelta', 'timezone', 'tzinfo']
+
+datetime.datetime.now()
+treehouse_start = datetime.datetime.now()
+treehouse_start = treehouse_start.replace(hour=8, minute=0, second=0, microsecond=0)
+>>> datetime.datetime.now() - treehouse_start
+datetime.timedelta(0, 6165, 123367)
+0 - days. number os seconds , then microseconds
+datetime.timedelta(0, 6277, 946999)
+>>> time_worked.days
+0
+>>> time_worked.microseconds
+946999
+>>> dir(time_worked)
+['__abs__', '__add__', '__bool__', '__class__', '__delattr__', '__dir__', '__divmod__', '__doc__', '__eq__', '__floordiv__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__mod__', '__mul__', '__ne__', '__neg__', '__new__', '__pos__', '__radd__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rmod__', '__rmul__', '__rsub__', '__rtruediv__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', 'days', 'max', 'microseconds', 'min', 'resolution', 'seconds', 'total_seconds']
+>>> hours_worked = round(time_worked.seconds/3600)
+>>> hours_worked
+2
+>>>
+>>> import datetime
+>>> now = datetime.datetime.now()
+>>> now
+datetime.datetime(2017, 4, 21, 9, 57, 11, 888801)
+>>> datetime.timedelta(hours=5)
+datetime.timedelta(0, 18000)
+>>> datetime.timedelta(days=5)
+datetime.timedelta(5)
+>>> now + datetime.timedelta(days=3)
+datetime.datetime(2017, 4, 24, 9, 57, 11, 888801)
+>>> now + datetime.timedelta(days=-5)
+datetime.datetime(2017, 4, 16, 9, 57, 11, 888801)
+- can use minus too 
+>>> now.date()
+datetime.date(2017, 4, 21)
+>>> now.time()
+datetime.time(9, 57, 11, 888801)
+>>> hour = datetime.timedelta(hours=1)
+>>> hour
+datetime.timedelta(0, 3600)
+>>> workday = hour * 9
+>>> workday
+datetime.timedelta(0, 32400)
+>>> tomorrow = datetime.datetime.now().replace(hour=9, minute=0) + datetime.timedelta(days=1)
+>>> tomorrow
+datetime.datetime(2017, 4, 22, 9, 0, 5, 591513)
+>>> tomorrow + workday
+datetime.datetime(2017, 4, 22, 18, 0, 5, 591513)
+>>> workday
+datetime.timedelta(0, 32400)
+>>> start = datetime.datetime(2014, 11, 1, 12, 45)
+>>> appointment = datetime.timedelta(minutes=45)
+>>> end = start + appointment
+>>> end
+datetime.datetime(2014, 11, 1, 13, 30)
+# a look at attributes in datettime 
+>>> import datetime
+>>> now = datetime.datetime.now()
+>>> today = datetime.datetime.today()
+>>> now
+datetime.datetime(2017, 4, 23, 15, 15, 18, 503)
+>>> today
+datetime.datetime(2017, 4, 23, 15, 15, 34, 120007)
+>>> - now() can take time zone param
+>>> today = datetime.datetime.combine(datetime.date.today(), datetime.time())
+>>> today
+datetime.datetime(2017, 4, 23, 0, 0) # Midnight 
+>>> datetime.time()
+datetime.time(0, 0) 
+>>> today.hour
+0
+>>> today.month
+4
+>>> today.hour
+0
+>>> today.year
+2017
+>>> today.day
+23
+#methods ... 
+>>> POSIX - Jan 1 1970 - when the EPOCH started 
+>>> today.weekday()
+6 - (Sunday) 
+>>> now.timestamp()
+1492953318.000503
+
+New Terms
+
+    strftime - Method to create a string from a datetime
+    strptime - Method to create a datetime from a string according to a format string
+
+Links
+
+    strftime/strptime guide
+    strftime reference sheet
+https://docs.python.org/3/library/datetime.html?highlight=datetime#strftime-and-strptime-behavior
+>>> now
+datetime.datetime(2017, 4, 23, 15, 37, 45, 140366)
+>>> now.strftime('%B %d')
+'April 23'
+now.strftime('%m/%d/%y')
+'04/23/17'
+>>> birthday = datetime.datetime.strptime('2015-04-21', '%Y-%m-%d')
+>>> birthday
+datetime.datetime(2015, 4, 21, 0, 0)
+# f - format time, p - parse time 
+
